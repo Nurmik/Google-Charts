@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Alex Nurmberg">
+    <title>Muusika igapäevaelus</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/starter-template/">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="index.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" style="color: #ffffff">Esileht</a>
+
+  <!--<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>-->
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+    </form>
+  </div>
+</nav>
+
+<main role="main" class="container">
+  <div class="shadow-none p-3 mb-5 bg-primary rounded">
+    <div class="starter-template" style="color: white">
+      <h1>Muusika igapäeva elus</h1>
+      <p class="lead">
+        Olen Kuressaare Ametikooli tarkvaraarendaja eriala õpilane.
+        <br>
+        Küsitlus on koostatud puhtast uudishimust, sest muusika mängib minu elus väga suurt rolli.
+      </p>
+    </div>
+  </div>
+</main><!-- /.container -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
+        
+    <!--Load the AJAX API--> 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+    <script type="text/javascript"> 
+     
+    // Load the Visualization API and the piechart package. 
+    google.charts.load('current', {'packages':['corechart']}); 
+       
+    // Set a callback to run when the Google Visualization API is loaded. 
+    google.charts.setOnLoadCallback(drawChart); 
+    google.charts.setOnLoadCallback(drawChart2);
+    google.charts.setOnLoadCallback(drawChart3); 
+    google.charts.setOnLoadCallback(drawChart4);
+    google.charts.setOnLoadCallback(drawChart5);
+
+    function drawChart(radio) { 
+      var jsonData = $.ajax({ 
+          url: "getData.php", 
+          method: "POST", 
+          data: { 
+            action: radio 
+          }, 
+          dataType: "json", 
+          async: false 
+          }).responseText; 
+
+      // Create our data table out of JSON data loaded from server. 
+      var data = new google.visualization.DataTable(jsonData);
+
+      // Instantiate and draw our chart, passing in some options. 
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, {width: 400, height: 240});
+    } 
+
+    $('input[name=radio]').click(function () { 
+      var radio = $(this).val(); 
+
+      drawChart(radio);
+      title: uwuowo
+    });
+
+    function drawChart2(radio) {
+      var jsonData = $.ajax({
+          url: "getData2.php",
+          method: "POST",
+          data: {
+            action: radio
+          },
+          dataType: "json",
+          async: false
+          }).responseText;
+
+      // Create our data table out of JSON data loaded from server.
+      var data = new google.visualization.DataTable(jsonData);
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
+      chart.draw(data, {width: 400, height: 240});
+    }
+
+    $('input[name=radio]').click(function () {
+      var radio = $(this).val();
+
+      drawChart2(radio);
+    });
+
+    function drawChart3(radio) { 
+      var jsonData = $.ajax({ 
+          url: "getData3.php", 
+          method: "POST", 
+          data: { 
+            action: radio 
+          }, 
+          dataType: "json", 
+          async: false 
+          }).responseText; 
+
+      // Create our data table out of JSON data loaded from server. 
+      var data = new google.visualization.DataTable(jsonData); 
+
+      // Instantiate and draw our chart, passing in some options. 
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div3')); 
+      chart.draw(data, {width: 400, height: 240}); 
+    } 
+
+    $('input[name=radio]').click(function () { 
+      var radio = $(this).val(); 
+
+      drawChart3(radio); 
+    }); 
+
+
+    function drawChart4(radio) { 
+      var jsonData = $.ajax({ 
+          url: "getData4.php", 
+          method: "POST", 
+          data: { 
+            action: radio 
+          }, 
+          dataType: "json", 
+          async: false 
+          }).responseText; 
+           
+      // Create our data table out of JSON data loaded from server. 
+      var data = new google.visualization.DataTable(jsonData); 
+
+      // Instantiate and draw our chart, passing in some options. 
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div4')); 
+      chart.draw(data, {width: 400, height: 240}); 
+    } 
+
+    $('input[name=radio]').click(function () { 
+      var radio = $(this).val(); 
+
+      drawChart4(radio); 
+    });
+
+    function drawChart5(radio) {
+      var jsonData = $.ajax({ 
+          url: "getData5.php", 
+          method: "POST", 
+          data: { 
+            action: radio 
+          }, 
+          dataType: "json", 
+          async: false 
+          }).responseText; 
+           
+      // Create our data table out of JSON data loaded from server. 
+      var data = new google.visualization.DataTable(jsonData); 
+
+      // Instantiate and draw our chart, passing in some options. 
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div5')); 
+      chart.draw(data, {width: 400, height: 240}); 
+    } 
+
+    $('input[name=radio]').click(function () { 
+      var radio = $(this).val(); 
+
+      drawChart5(radio); 
+    }); 
+
+    </script>
+
+  <body>
+
+  <div class="row">
+    <div class="col-4">
+    <div class="d-inline-flex p-2">
+      <div class="card-body">
+        <div>
+          <center>
+           <h4>Sugu</h4>
+          </center>
+        </div>
+        <div id="chart_div" align="center" class="shadow-sm p-3 mb-5 bg-primary rounded d-inline-flex p-2"></div>
+      </div>
+    </div>
+  </div>
+    <div class="col-4">
+    <div class="d-inline-flex p-2">
+      <div class="card-body">
+        <div>
+          <center>
+            <h4>Vanus</h4>
+          </center>
+        </div>
+        <div id="chart_div2" align="center" class="shadow-sm p-3 mb-5 bg-primary rounded d-inline-flex p-2"></div>
+      </div>
+    </div>
+  </div>
+    <div class="col-4">
+    <div class="d-inline-flex p-2">
+      <div class="card-body">
+        <div>
+          <center>
+            <h4>Kas kuulate muusikat?</h4>
+          </center>
+        </div>
+        <div id="chart_div3" align="center" class="shadow-sm p-3 mb-5 bg-primary rounded d-inline-flex p-2"></div>
+      </div>
+    </div>
+  </div>
+    <div class="col-4">
+    <div class="d-inline-flex p-2">
+      <div class="card-body">
+        <div>
+          <center>
+            <h4>Lemmikžanrid</h4>
+          </center>
+        </div>
+        <div id="chart_div4" align="center" class="shadow-sm p-3 mb-5 bg-primary rounded d-inline-flex p-2"></div>
+      </div>
+    </div>
+  </div>
+    <div class="col-4">
+    <div class="d-inline-flex p-2">
+      <div class="card-body">
+        <div>
+          <center>
+            <h4>Kuidas kuulate muusikat?</h4>
+          </center>
+        </div>
+        <div id="chart_div5" align="center" class="shadow-sm p-3 mb-5 bg-primary rounded d-inline-flex p-2"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Eelmine</a></li>
+        <li class="page-item active" aria-current="page">
+          <span class="page-link">
+            1
+          <span class="sr-only">(current)</span>
+          </span>
+        </li>
+        <li class="page-item"><a class="page-link" href="index2.html">2</a></li>
+        <li class="page-item"><a class="page-link" href="index2.html">Järgmine</a></li>
+      </ul>
+      </ul>
+    </nav>
+  </body> 
+</html>
